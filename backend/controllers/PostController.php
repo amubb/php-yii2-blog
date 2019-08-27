@@ -2,60 +2,50 @@
 
 namespace backend\controllers;
 
-
+use backend\components\BaseController;
 use common\models\Post;
 use Yii;
-use backend\components\BaseController;
-use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
+use yii\web\NotFoundHttpException;
 
 /**
- * PostController implements the CRUD actions for Content model.
+ * Class PostController
+ * @package backend\controllers
  */
 class PostController extends BaseController
 {
-
-
     /**
-     * Lists all Content models.
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
-
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find()->selectNoText()->with('categories')->with('author')->orderByCid(),
         ]);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
-
     }
 
-
     /**
-     * Creates a new Content model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
         $model = new Post();
-        $model->allowComment=true;
-        $model->allowFeed=true;
-        $model->allowPing=true;
+        $model->allowComment = true;
+        $model->allowFeed = true;
+        $model->allowPing = true;
 
-        if(Yii::$app->request->isPost){
-
-            if($model->load(Yii::$app->request->post())){
-                $model->inputCategories=Yii::$app->request->post('inputCategories',[]);
-                $model->inputTags=Yii::$app->request->post('inputTags',[]);
-                $model->inputAttachments=Yii::$app->request->post('inputAttachments',[]);
+        if (Yii::$app->request->isPost) {
+            if ($model->load(Yii::$app->request->post())) {
+                $model->inputCategories = Yii::$app->request->post('inputCategories', []);
+                $model->inputTags = Yii::$app->request->post('inputTags', []);
+                $model->inputAttachments = Yii::$app->request->post('inputAttachments', []);
                 if ($model->save()) {
                     return $this->redirect(['index']);
                 }
             }
-
         }
 
         return $this->render('create', [
@@ -64,26 +54,22 @@ class PostController extends BaseController
     }
 
     /**
-     * Updates an existing Content model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return string|\yii\web\Response
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if(Yii::$app->request->isPost){
-
-            if($model->load(Yii::$app->request->post())){
-                $model->inputCategories=Yii::$app->request->post('inputCategories',[]);
-                $model->inputTags=Yii::$app->request->post('inputTags',[]);
-                $model->inputAttachments=Yii::$app->request->post('inputAttachments',[]);
+        if (Yii::$app->request->isPost) {
+            if ($model->load(Yii::$app->request->post())) {
+                $model->inputCategories = Yii::$app->request->post('inputCategories', []);
+                $model->inputTags = Yii::$app->request->post('inputTags', []);
+                $model->inputAttachments = Yii::$app->request->post('inputAttachments', []);
                 if ($model->save()) {
                     return $this->redirect(['index']);
                 }
             }
-
         }
 
         return $this->render('update', [
@@ -92,10 +78,8 @@ class PostController extends BaseController
     }
 
     /**
-     * Deletes an existing Content model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return \yii\web\Response
      */
     public function actionDelete($id)
     {
@@ -104,15 +88,13 @@ class PostController extends BaseController
     }
 
     /**
-     * Finds the Content model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Post the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param $id
+     * @return array|null|\yii\db\ActiveRecord
+     * @throws NotFoundHttpException
      */
     protected function findModel($id)
     {
-        if (($model = Post::find()->andWhere(['cid'=>$id])->one()) !== null) {
+        if (($model = Post::find()->andWhere(['cid' => $id])->one()) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
