@@ -169,16 +169,24 @@ class Post extends Content
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-        $beforeCount = $afterCount = false;
+
         if ($insert) {
             $beforeCount = false;
             $afterCount = $this->status == static::STATUS_PUBLISH;
         } else {
             if (isset($changedAttributes['status'])) {
+                //公开到隐藏 OR 隐藏到公开
                 $beforeCount = $changedAttributes['status'] == static::STATUS_PUBLISH;
                 $afterCount = $this->status == static::STATUS_PUBLISH;
+            } else if ($this->status == static::STATUS_PUBLISH) {
+                //公开到公开
+                $beforeCount = $afterCount = true;
+            } else {
+                //隐藏到隐藏
+                $beforeCount = $afterCount = false;
             }
         }
+
         $this->insertCategories($this->inputCategories, $beforeCount, $afterCount);
         $this->insertTags($this->inputTags, $beforeCount, $afterCount);
         $this->insertAttachment($this->inputAttachments);
