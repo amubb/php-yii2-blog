@@ -60,7 +60,7 @@ $this->title = '';
             </span>
         </div>
     </div>
-    <div class="post-content">
+    <div class="post-content post-content-short">
         <?=\yii\helpers\Markdown::process($post->text)?>
     </div>
     <div class="post-permalink">

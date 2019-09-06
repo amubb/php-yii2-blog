@@ -336,6 +336,11 @@ pre {
     font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
     color: #444443;
 }
+.post-content-short {
+    height: 200px;
+    overflow: hidden;
+}
+
 .post-content h1,
 .post-content h2,
 .post-content h3,
