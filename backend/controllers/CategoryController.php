@@ -31,7 +31,8 @@ class CategoryController extends BaseController
         }
 
         $dataProvider = new ActiveDataProvider([
-            'query' => Category::find()->andWhere('parent=:parent',[':parent'=>$parent])->orderByMid(),
+            // 'query' => Category::find()->andWhere('parent=:parent',[':parent'=>$parent])->orderByMid(),
+            'query' => Category::find()->andWhere('parent=:parent',[':parent'=>$parent]),
         ]);
         return $this->render('index', [
             'dataProvider' => $dataProvider,

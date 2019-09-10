@@ -35,7 +35,8 @@ $this->title = '管理分类';
                     if($count==0){
                         return Html::a('新增',['/category/create','parent'=>$model->mid]);
                     }else{
-                        return Html::a($count.'个分类',['/category','parent'=>$model->mid]);
+                        return Html::a('新增',['/category/create','parent'=>$model->mid]) . '&emsp;' .
+                            Html::a($count.'个分类',['/category','parent'=>$model->mid]);
                     }
                 }
             ],
