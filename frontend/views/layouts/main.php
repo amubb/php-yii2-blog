@@ -32,12 +32,8 @@ AppAsset::register($this);
     <nav class="main-navigation">
         <div class="container">
             <div class="row">
-                <div class="col-sm-1">
-                    <a class="branding" href="<?=\yii\helpers\Url::home()?>" title="<?= \common\helpers\SiteHelper::getTitle() ?>">
-                        <img src="<?=\yii\helpers\Url::to('@web/image/logo.png')?>" alt="<?= \common\helpers\SiteHelper::getTitle() ?>">
-                    </a>
-                </div>
-                <div class="col-sm-11">
+
+                <div class="col-sm-8">
                     <div class="navbar-header">
                         <span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu">
                         <span class="sr-only">Toggle navigation</span>
@@ -47,6 +43,11 @@ AppAsset::register($this);
                     <div class="collapse navbar-collapse" id="main-menu">
                         <?=\frontend\widgets\NavBar::widget()?>
                     </div>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <a class="branding" href="<?=\yii\helpers\Url::home()?>" title="<?= \common\helpers\SiteHelper::getTitle() ?>">
+                        <img src="<?=\yii\helpers\Url::to('@web/image/logo.png')?>" alt="<?= \common\helpers\SiteHelper::getTitle() ?>">
+                    </a>
                 </div>
             </div>
         </div>
