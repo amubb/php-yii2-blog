@@ -27,27 +27,17 @@ AppAsset::register($this);
 </head>
 <body class="home-template">
     <?php $this->beginBody() ?>
-    <!-- start header -->
-    <header class="main-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-
-                <!-- start logo -->
-                <a class="branding" href="<?=\yii\helpers\Url::home()?>" title="<?= \common\helpers\SiteHelper::getTitle() ?>"><img src="<?=\yii\helpers\Url::to('@web/image/logo.png')?>" alt="<?= \common\helpers\SiteHelper::getTitle() ?>"></a>
-                <!-- end logo -->
-                <h2 class="text-hide"><?= \common\helpers\SiteHelper::getDescription() ?></h2>
-            </div>
-        </div>
-    </div>
-    </header>
-    <!-- end header -->
 
     <!-- start navigation -->
     <nav class="main-navigation">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-1">
+                    <a class="branding" href="<?=\yii\helpers\Url::home()?>" title="<?= \common\helpers\SiteHelper::getTitle() ?>">
+                        <img src="<?=\yii\helpers\Url::to('@web/image/logo.png')?>" alt="<?= \common\helpers\SiteHelper::getTitle() ?>">
+                    </a>
+                </div>
+                <div class="col-sm-11">
                     <div class="navbar-header">
                         <span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu">
                         <span class="sr-only">Toggle navigation</span>
