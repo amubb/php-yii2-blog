@@ -920,6 +920,13 @@ pre {
     display: table;
     height: 100%
 }
+
+.li-overflow-hidden {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
 @media (max-width: 630px) {
     .error-content {
         max-width: 264px;
