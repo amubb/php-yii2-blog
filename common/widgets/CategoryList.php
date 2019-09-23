@@ -40,14 +40,14 @@ class CategoryList extends yii\base\Widget
                 $this->_htmlStr .= str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $v['depth'] - 1) . Html::a($v['name'] . '(' . $v['count'] . ')', ['site/category', 'slug' => $v['slug']], $this->options);
                 $this->_htmlStr .= '</li>';
 
-                $category= Category::find()->andWhere(['slug'=>$v['slug']])->one();
-                $posts=$category->getPosts()->orderBy(['created' => SORT_ASC])->all();
+                $category = Category::find()->andWhere(['slug' => $v['slug']])->one();
+                $posts = $category->getPosts()->orderBy(['created' => SORT_ASC])->all();
                 foreach ($posts as $post) {
                     $this->_htmlStr .= '<li class="li-overflow-hidden">';
                     $this->_htmlStr .= str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $v['depth']) .
                         Html::a(
-                            '<i class="fa fa-file-text-o"></i> ' .$post['title'],
-                            ['post/'.$post['cid']],
+                            '<i class="fa fa-file-text-o"></i> ' . $post['title'],
+                            ['post/' . $post['cid']],
                             array_merge(
                                 $this->options,
                                 [
