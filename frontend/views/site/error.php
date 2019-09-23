@@ -29,7 +29,7 @@ if ($exception instanceof \yii\web\HttpException) {
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
     <meta http-equiv="cleartype" content="on">
 
     <link rel="stylesheet" href="<?=\yii\helpers\Url::to('@web/css/all.css') ?>" />

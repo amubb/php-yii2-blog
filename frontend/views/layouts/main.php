@@ -19,7 +19,7 @@ AppAsset::register($this);
     <meta name="description" content="<?= \common\helpers\SiteHelper::getDescription($this->description) ?>" />
     <meta name="keywords" content="<?= \common\helpers\SiteHelper::getKeywords($this->keywords) ?>">
     <meta name="HandheldFriendly" content="True" />
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
 
     <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
