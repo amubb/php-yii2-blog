@@ -742,6 +742,7 @@ pre {
 }
 .widget .category li a{
     font-size: 18px;
+    font-weight: bold;
 }
 .widget .category li ul,
 .widget .category li ol {

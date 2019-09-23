@@ -21,7 +21,7 @@ class CategoryList extends yii\base\Widget
     /**
      * @var
      */
-    public $options;
+    public $options = [];
 
     /**
      *
@@ -44,16 +44,18 @@ class CategoryList extends yii\base\Widget
                 $posts=$category->getPosts()->all();
                 foreach ($posts as $post) {
                     $this->_htmlStr .= '<li class="li-overflow-hidden">';
-                    $this->_htmlStr .= str_repeat(
-                        '&nbsp;&nbsp;&nbsp;&nbsp;', $v['depth']) . Html::a($post['title'],
+                    $this->_htmlStr .= str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $v['depth']) .
+                        Html::a(
+                            '<i class="fa fa-file-text-o"></i> ' .$post['title'],
                             ['post/'.$post['cid']],
-                            // $this->options
-                            [
-                                'style' => [
-                                    'color' => 'black',
-                                    'font-size' => '14px',
-                                ],
-                            ]
+                            array_merge(
+                                $this->options,
+                                [
+                                    'style' => [
+                                        'font-size' => '14px',
+                                    ],
+                                ]
+                            )
                         );
                     $this->_htmlStr .= '</li>';
                 }
