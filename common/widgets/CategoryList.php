@@ -41,7 +41,8 @@ class CategoryList extends yii\base\Widget
                 $this->_htmlStr .= '</li>';
 
                 $category = Category::find()->andWhere(['slug' => $v['slug']])->one();
-                $posts = $category->getPosts()->orderBy(['created' => SORT_ASC])->all();
+                // $posts = $category->getPosts()->orderBy(['created' => SORT_ASC])->all();
+                $posts = $category->getPosts()->orderBy(['order' => SORT_ASC, 'created' => SORT_ASC])->all();
                 foreach ($posts as $post) {
                     $this->_htmlStr .= '<li class="li-overflow-hidden">';
                     $this->_htmlStr .= str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $v['depth']) .

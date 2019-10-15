@@ -43,6 +43,7 @@ use yii\widgets\ActiveForm;
                     'attribute' => 'created'
                 ]) ?>
                 <?= \common\widgets\CategoryCheckboxList::widget(['postId' => $model->cid]) ?>
+                <?= $form->field($model, 'order')->textInput(['type' => 'number']) ?>
                 <?= \backend\widgets\TagsEdit::widget([
                     'name' => 'inputTags[]',
                     'tags' => $model->isNewRecord ? [] : $model->tags,
